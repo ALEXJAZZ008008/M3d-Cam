@@ -60,7 +60,7 @@ class _BaseWrapper():
             mask = label(output) * 1.0
         else:
             mask = torch.zeros(output.shape).to(self.device)
-            mask[:, label] = 1
+            mask[:, label.long()] = 1
         return mask
 
     def _extract_metadata(self, input, output):  # TODO: Does not work for classification output (shape: (1, 1000)), merge with the one in medcam_inject
